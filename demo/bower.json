@@ -1,0 +1,13 @@
+{
+  "name": "require-demo",
+  "version": "0.1.1",
+  "dependencies": {
+    "angular": "latest",
+    "bootstrap": "latest",
+    "jquery": "1.11.0",
+    "requirejs": "latest"
+  },
+  "devDependencies": {
+    "angular": "*"
+  }
+}

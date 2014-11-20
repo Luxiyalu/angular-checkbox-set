@@ -1,0 +1,45 @@
+@import "../vendors/bootstrap/dist/css/bootstrap.min.css";
+body .center-block {
+  width: 800px;
+  margin-top: 30px;
+  text-align: center;
+}
+body checkbox {
+  display: inline-block;
+  margin: 10px;
+}
+body .first-level,
+body .second-level,
+body .third-level {
+  display: inline-block;
+  width: 46%;
+  margin: 0 1%;
+  vertical-align: top;
+}
+body .first-level > div,
+body .second-level > div,
+body .third-level > div {
+  display: inline-block;
+  padding: 10px;
+}
+body pre {
+  text-align: left;
+  overflow: scroll;
+}
+checkbox {
+  cursor: pointer;
+}
+checkbox .checkbox-outer {
+  width: 20px;
+  height: 20px;
+  /*margin: 0 auto;*/
+  border: 1px solid grey;
+  background-color: white;
+}
+checkbox .checkbox-inner {
+  width: 100%;
+  height: 100%;
+  background-image: url(../images/cross.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}

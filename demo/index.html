@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-controller="appCtrl">
+
+<div class="center-block">
+    <div class="first-level">
+        <div>
+            <checkbox hook="'gp'" status-stored-in="grandParent"></checkbox>
+        </div>
+        <pre>$scope.grandParent: {{ grandParent }}</pre>
+    </div>
+    <div></div>
+    <div class="second-level">
+        <div>
+            <checkbox hooked-to="'gp'" hook="'p1'" status-stored-in="parents[0]"></checkbox>
+            <checkbox hooked-to="'gp'" hook="'p2'" status-stored-in="parents[1]"></checkbox>
+        </div>
+        <pre>$scope.parents: [
+            <p ng-repeat="p in parents">    {{ p }}</p>]</pre>
+    </div>
+    <div></div>
+    <div class="third-level">
+        <div>
+            <checkbox hooked-to="'p1'" status-stored-in="c" ng-repeat="c in childrenA"></checkbox>
+        </div>
+        <pre>$scope.childrenA: [
+            <p ng-repeat="c in childrenA">    {{ c }}</p>]</pre>
+    </div>
+    <div class="third-level">
+        <div>
+            <checkbox hooked-to="'p2'" status-stored-in="c" ng-repeat="c in childrenB"></checkbox>
+        </div>
+        <pre>$scope.childrenB: [
+            <p ng-repeat="c in childrenB">    {{ c }}</p>]</pre>
+    </div>
+</div>
+
+<script data-main="scripts/config" src="vendors/requirejs/require.js"></script>
+</body>
+</html>
