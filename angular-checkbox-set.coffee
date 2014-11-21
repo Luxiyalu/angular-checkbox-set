@@ -5,8 +5,8 @@ module = angular.module 'luxiyalu.checkboxSet', []
 module.value 'checkboxHooks', {}
 
 # if you don't want the check/uncheck status to remain
-# after ng-view switch, clear the value checkboxes to {}
-# upon entering pages.
+# after ng-view switch, clear this value to {}
+# upon page entrances.
 module.directive 'checkbox', (checkboxHooks) ->
   restrict: 'E'
   scope:
