@@ -8,8 +8,6 @@ Angular directive, with recursive support for multiple layers of checkboxes.
 4. You could have as many levels of checkboxes as you like.
 
 ### Install
-Install with:
-
 ```command
 $ bower install angular-checkbox-set
 ```
