@@ -14,7 +14,12 @@ Install with:
 $ bower install angular-checkbox-set
 ```
 
-## Code example
+## Directive Attributes
+1. `hook`, string. **Notice the single quote within double quote!**
+2. `hooked-to`, string. Same as above.
+3. `status-stored-in`, scope object.
+
+## Code Example
 ```html
 <!-- provide a hook string for its children -->
 <!-- gpObj will have a property "checked", its value would be boolean -->
