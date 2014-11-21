@@ -7,19 +7,19 @@ Angular directive, with recursive support for multiple layers of checkboxes.
 3. A checkbox could have both `hook` and `hooked-to` attributes, which means:
 4. You could have as many levels of checkboxes as you like.
 
-## Install
+### Install
 Install with:
 
 ```command
 $ bower install angular-checkbox-set
 ```
 
-## Directive Attributes
+### Directive Attributes
 1. `hook`, string. **Notice the single quote within double quote!**
 2. `hooked-to`, string. Same as above.
 3. `status-stored-in`, scope object.
 
-## Code Example
+### Code Example
 ```html
 <!-- provide a hook string for its children -->
 <!-- gpObj will have a property "checked", its value would be boolean -->
