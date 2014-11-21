@@ -1,7 +1,7 @@
 module = angular.module 'luxiyalu.checkboxSet', []
 
-# make sure each checkbox has a unique name, since
-# they'll depend on this to identify their parent/children
+# make sure each checkbox hook has a unique name, since
+# they'll depend on this to identify their anchors
 module.value 'checkboxHooks', {}
 
 # if you don't want the check/uncheck status to remain
