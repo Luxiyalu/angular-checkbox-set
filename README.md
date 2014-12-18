@@ -6,6 +6,7 @@ Angular directive, with recursive support for multiple layers of checkboxes.
 2. The `hook` and `hooked-to` attributes are optional. `hook` act as a hook, `hooked-to` hook the checkbox to the filled-in hook.
 3. A checkbox could have both `hook` and `hooked-to` attributes, which means:
 4. You could have as many levels of checkboxes as you like.
+5. No need to initialise all the checkboxes at the same time: you could put children checkboxes inside `ng-if`s and when they come into existence, they'll automatically follow the status of their parent.
 
 ### Install
 ```command
@@ -32,8 +33,6 @@ $ bower install angular-checkbox-set
 <checkbox hook="'parentB'" hooked-to="'grandParent'" status-stored-in="pObjB"></checkbox>
 
 <!-- you could link the hooks recursively, and they don't have to be placed in a inherited structure in html -->
-<!-- the only thing to pay attention to is have all the checkboxes initiate at the same time (no ng-if on or above them) -->
-<!-- otherwise when user already clicks on a checkbox, and causing the other to initialise, it's status could be wrong -->
 <checkbox hooked-to="'parentA'" status-stored-in="cObjA1"></checkbox>
 <checkbox hooked-to="'parentA'" status-stored-in="cObjA2"></checkbox>
 ```
