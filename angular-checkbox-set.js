@@ -14,32 +14,38 @@
         hookedTo: '=',
         statusStoredIn: '='
       },
-      template: '<div class="checkbox-outer" ng-click="toggleCheck()">' + '<div class="checkbox-inner" ng-show="statusStoredIn.checked"></div>' + '</div>',
+      templateUrl: 'templates/checkbox.html',
       link: function($scope, element, attr) {
-        var broadcastUpdate, ccb, emitUpdate, hook, hookedTo, pcb, statusObj;
+        var broadcastUpdate, emitUpdate, hook, hookedTo, pcb, self, statusObj;
+        self = {};
         hook = $scope.hook;
         hookedTo = $scope.hookedTo;
         statusObj = $scope.statusStoredIn;
+        statusObj.checked = false;
         if (hookedTo != null) {
-          pcb = checkboxHooks[hookedTo] != null ? checkboxHooks[hookedTo] : checkboxHooks[hookedTo] = {};
+          if (checkboxHooks[hookedTo] != null) {
+            pcb = checkboxHooks[hookedTo];
+            statusObj.checked = pcb.scope.statusStoredIn.checked;
+          } else {
+            pcb = checkboxHooks[hookedTo] = {};
+          }
+          self.scope = $scope;
+          self.parent = hookedTo;
+          self.statusObj = statusObj;
           if (pcb.children == null) {
             pcb.children = [];
           }
-          pcb.children.push({
-            scope: $scope,
-            parent: hookedTo,
-            statusObj: statusObj
-          });
+          pcb.children.push(self);
         }
         if (hook != null) {
-          ccb = checkboxHooks[hook] != null ? checkboxHooks[hook] : checkboxHooks[hook] = {};
-          if (ccb.scope == null) {
-            ccb.scope = $scope;
+          self = checkboxHooks[hook] != null ? checkboxHooks[hook] : checkboxHooks[hook] = {};
+          if (self.scope == null) {
+            self.scope = $scope;
           }
-          ccb.parent = hookedTo;
+          self.parent = hookedTo;
           $scope.checkIfAll = function(state) {
             var result;
-            return result = ccb.children.every(function(e, i, a) {
+            return result = self.children.every(function(e, i, a) {
               return e.statusObj.checked === state;
             });
           };
@@ -57,10 +63,10 @@
         };
         broadcastUpdate = function() {
           var child, _i, _len, _ref, _results;
-          if ((ccb != null ? ccb.children : void 0) == null) {
+          if ((self != null ? self.children : void 0) == null) {
             return;
           }
-          _ref = ccb.children;
+          _ref = self.children;
           _results = [];
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             child = _ref[_i];
@@ -68,7 +74,7 @@
           }
           return _results;
         };
-        return emitUpdate = function() {
+        emitUpdate = function() {
           if (hookedTo == null) {
             return;
           }
@@ -81,6 +87,12 @@
             return pcb.scope.toggleCheck(true, 'emit');
           }
         };
+        if (hook != null) {
+          $scope.toggleCheck(statusObj.checked, 'broadcast');
+          return $scope.$on('$destroy', function() {
+            return delete checkboxHooks[hook];
+          });
+        }
       }
     };
   });
