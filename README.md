@@ -10,7 +10,7 @@ Angular directive, with recursive support for multiple layers of checkboxes.
 
 ### Install
 ```command
-$ bower install angular-checkbox-set
+$ yarn add angular-checkbox-set
 ```
 
 ### Directive Attributes
